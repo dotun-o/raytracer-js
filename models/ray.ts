@@ -1,4 +1,4 @@
 interface Ray {
-  start: Vector;
-  direction: Vector;
+    start: Vector;
+    direction: Vector;
 }
