@@ -2,7 +2,7 @@ class Color {
     r: number;
     g: number;
     b: number;
-    a: number
+    a: number;
 
     constructor(r: number, g: number, b: number, a: number = 0) {
         // never drop below 0.0
@@ -21,7 +21,7 @@ class Color {
     }
 
     static scale(n: number, c: Color) {
-        return new Color(n * c.r, n * c.g, n * c.b, c.a);
+        return new Color(n * c.r, n * c.g, n * c.b, n * c.a);
     }
     
     static multiply(c1: Color, c2: Color) {
@@ -46,7 +46,7 @@ class Color {
             r: Math.floor(c.r * 7),
             g: Math.floor(c.g * 7),
             b: Math.floor(c.b * 3)
-        }
+        };
     }
     
     static toBit16(c: Color) {
@@ -55,7 +55,7 @@ class Color {
             g: Math.floor(c.g * 15),
             b: Math.floor(c.b * 15),
             a: Math.floor(c.a * 15)
-        }
+        };
     }
     
     static toBit24(c: Color) {
@@ -64,7 +64,7 @@ class Color {
             r: Math.floor(c.r * 255),
             g: Math.floor(c.g * 255),
             b: Math.floor(c.b * 255)
-        }
+        };
     }
     
     static toBit32(c: Color) {
@@ -73,7 +73,7 @@ class Color {
             g: Math.floor(c.g * 255),
             b: Math.floor(c.b * 255),
             a: Math.floor(c.a * 255)
-        }
+        };
     }
 
     // presets
