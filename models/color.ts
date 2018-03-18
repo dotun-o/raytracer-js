@@ -71,7 +71,7 @@ class Color {
         return {
             r: Math.floor(c.r * 255),
             g: Math.floor(c.g * 255),
-            b: Math.floor(c.b * 255)
+            b: Math.floor(c.b * 255),
             a: Math.floor(c.a * 255)
         }
     }
