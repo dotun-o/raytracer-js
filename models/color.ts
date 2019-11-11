@@ -4,20 +4,30 @@ class Color {
     b: number;
     a: number;
 
-    constructor(r: number, g: number, b: number, a: number = 0) {
-        // never drop below 0.0
-        this.r = r < 0.0 ? 0.0 : r;
-        this.g = g < 0.0 ? 0.0 : g;
-        this.b = b < 0.0 ? 0.0 : b;
-        this.a = a < 0.0 ? 0.0 : a;
+    constructor(r: number = 0, g: number = 0, b: number = 0, a: number = 0) {
+        const {normalizedR, normalizedG, normalizedB, normalizedA} = this.normalize(r, g, b, a);
+        this.r = normalizedR;
+        this.g = normalizedG;
+        this.b = normalizedB;
+        this.a = normalizedA;
+    }
+    
+    normalize(r: number = 0, g: number = 0, b: number = 0, a: number = 0) {
+        let normalizedR = 0, normalizedG = 0, normalizedB = 0, normalizedA = 0;
         
-        // never exceed 1.0
-        // compare to self, not to r,g,b again,
-        // or values could be set back below 0.0!
-        this.r = this.r > 1.0 ? 1.0 : this.r;
-        this.g = this.g > 1.0 ? 1.0 : this.g;
-        this.b = this.b > 1.0 ? 1.0 : this.b;
-        this.a = this.a > 1.0 ? 1.0 : this.a;
+        normalizedR = r < 0 ? 0 : r;
+        normalizedR = r > 1 ? 1 : normalizedR;
+        
+        normalizedG = g < 0 ? 0 : g;
+        normalizedG = g > 1 ? 1 : normalizedG;
+        
+        normalizedB = b < 0 ? 0 : b;
+        normalizedB = b > 1 ? 1 : normalizedB;
+        
+        normalizedA = a < 0 ? 0 : a;
+        normalizedA = a > 1 ? 1 : normalizedA;
+        
+        return {normalizedR, normalizedG, normalizedB, normalizedA};
     }
 
     static scale(n: number, c: Color) {
